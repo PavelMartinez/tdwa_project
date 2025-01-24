@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="neondb@ep-hidden-fog-a2paiii2.eu-central-1.aws.neon.tech" uuid="a6c3adc6-7e15-4802-b613-f83f5a22d03b">
+      <driver-ref>postgresql.aws_wrapper</driver-ref>
+      <synchronize>true</synchronize>
+      <schema-control>MANUAL</schema-control>
+      <jdbc-driver>software.amazon.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:aws-wrapper:postgresql://ep-hidden-fog-a2paiii2.eu-central-1.aws.neon.tech/neondb?sslmode=require</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>

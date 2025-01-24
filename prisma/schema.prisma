@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Workout {
+  id          String     @id @default(uuid()) // ID тренировки (нередактируемый)
+  description String // Описание тренировки
+  duration    Int // Продолжительность тренировки в секундах
+  exercises   Exercise[] // Список упражнений в тренировке
+}
+
+model Exercise {
+  id             String       @id @default(uuid()) // ID упражнения (нередактируемый)
+  description    String // Описание упражнения
+  typeId         String // Ссылка на тип упражнения
+  type           ExerciseType @relation(fields: [exerciseTypeId], references: [id]) // Тип упражнения (связь с таблицей ExerciseType)
+  duration       Int // Время на выполнение упражнения в секундах
+  Workout        Workout?     @relation(fields: [workoutId], references: [id])
+  workoutId      String?
+  exerciseTypeId String
+}
+
+model ExerciseType {
+  id         String     @id @default(uuid()) // ID типа упражнения
+  name       String // Название типа упражнения
+  difficulty Int // Сложность в условных единицах (целое число в диапазоне [1; M])
+  exercises  Exercise[] // Список упражнений данного типа
+}
+
+enum ExerciseTypeEnum {
+  CARDIO
+  STRENGTH
+  FLEXIBILITY
+  BALANCE
+}
