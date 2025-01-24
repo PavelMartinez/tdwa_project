@@ -397,9 +397,9 @@ export function WorkoutsTable({ data, exerciseData }: { data: WorkoutWithExercis
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="duration" className="text-right">
-                                    Продолжительность (сек)
+                                    Продолжительность (мин)
                                 </Label>
-                                <Input type={"number"} defaultValue={currentActionRow?.duration} name="duration"
+                                <Input type={"number"} defaultValue={currentActionRow?.duration ? currentActionRow?.duration / 60 : undefined} name="duration"
                                        id="duration" required className="col-span-3"/>
                             </div>
                             <div className="grid grid-cols-1 items-center gap-4">
